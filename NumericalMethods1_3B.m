@@ -1,3 +1,5 @@
+%authors - Ivan Liljeqvist and Filip Martinsson
+%version - 2015-04-12
 
 %save starting values in x and y
 x=[91 121 152 182 213 244];

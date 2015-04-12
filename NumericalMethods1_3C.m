@@ -1,3 +1,5 @@
+%authors - Ivan Liljeqvist and Filip Martinsson
+%version - 2015-04-12
 
 %make a matrix from the equation
 
