@@ -63,7 +63,7 @@ while(i<=iterations)
     end
 
 
-
+    %caculate with Trapetsmetoden
     Ths(i,1)=h*( sum(y_values) - (y_values(1,1) + y_values(numel(y_values),1))/2  );
     Errors(i,1)=abs(quad(@myfun,-1,1)-Ths(i,1));
 
@@ -76,8 +76,9 @@ end
 
 i=1;
 
+
 while(i<iterations)
-     %we use    F?=F2 + (F2-F1)/Q^P-1
+     %we use    F'=F2 + (F2-F1)/Q^P-1
      %Q = 2 P=2 f?r att felet blir 4 ganger mindre varje gang
      %och H minskar med faktorn tva. 2^X=4. da ar X=2 och X=P
      ExtapolatedValues(i,1)=Ths(i+1,1)+(Ths(i+1,1)-Ths(i,1))/(2^2 - 1);
@@ -95,6 +96,7 @@ end
     i 'felserien' och n?sta potens i serien ?r 4.
     Allts? ?r P=4.
 
+    FIXA DET VI SKIPPADE!
 %}
 
 
@@ -105,7 +107,21 @@ loglog(Hs,Errors);
 
 hold on
 
+Hs(numel(Hs))=[]
+loglog(Hs,ExtrapolatedErrors);
+
+Hs
+ExtrapolatedErrors
+ExtapolatedValues
+
+hold on
+
 loglog([1e-2 1e-1],[1e-6 1e-4],'--')
+
+legend('Normal','Extrapolated','slope 2');
+xlabel('Step length');
+ylabel('Error');
+title('Step length vs Error')
 
 
 %{

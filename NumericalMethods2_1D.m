@@ -30,9 +30,9 @@ plot(x,1,'.');
 hold off
 
 %{
-    Den kan kovergera mot r?tterna runt -2, 0 och 2.
+    Den kan kovergera mot rotterna runt -2, 0 och 2.
     Eftersom fix-punkts iteration bara konvergerar mot roten d?r 
-    absolutbelopppet av derivatan runt roten ?r mindre ?n 1.
+    absolutbelopppet av derivatan runt roten ar mindre an 1.
 
     F'(x) = 7/8-(15/14)*sin(3*x-5)
 
