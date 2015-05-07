@@ -1,4 +1,6 @@
 
+%authors Ivan Liljeqvist and Filip Martinsson
+
 y=[1;-1/3];
 L=2.6;
 h=0.2;
@@ -59,6 +61,7 @@ LAST_Y_DIFFERENCE=abs(Last_Y_SMALL_STEP-Last_Y_BIG_STEP);
 
 plot(X,Y(:,1),X,Y(:,1),'o');
 
+%{
 X
 Y=Y(:,1)
 
@@ -71,7 +74,7 @@ Z_3D=Y*sin(three_d_y);
 surf(X_3D,Y_3D,Z_3D);
 
 
-%{
+
     When h = 0.2 the graph is not very smooth.
 
     It is smoother when h=0.1 because the distance between the datapoints

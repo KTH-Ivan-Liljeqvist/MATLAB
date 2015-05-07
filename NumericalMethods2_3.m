@@ -1,4 +1,4 @@
-
+%authors Ivan Liljeqvist and Filip Martinsson
 
 
 %NORMAL ELLIPSE
@@ -23,7 +23,7 @@ polar(x_step,y)
 starting_values=[-4 -4; 7 7; -4 4; 7 2];
 
 for i=1:4
-    start_x = [starting_values(i,1) starting_values(i,2)]'; % This is just an example, ive tried 100's of start  values
+    start_x = [starting_values(i,1) starting_values(i,2)]'; 
    
     counter=0;
     x = start_x; 
@@ -33,30 +33,31 @@ for i=1:4
     
     Xs=[];
     Ys=[];
+    Dxs=[]
+    Dys=[]
     
     while norm(dx)>error & counter<30
         
-    f = [0.4*x(1).^2+x(2).^2-x(1).*x(2)-10
+    functions = [0.4*x(1).^2+x(2).^2-x(1).*x(2)-10
         (((x(1)-4).^2)/a.^2) + (((x(2)-2).^2)/b.^2)-1];
-    j = [0.8*x(1)-x(2) 2*x(2)-x(1) % Jacobian
+    jacobian = [0.8*x(1)-x(2) 2*x(2)-x(1) 
         2*((x(1)-4)/a.^2) 2*((x(2)-2)/b.^2)];
-        dx = -j\f;
-        x=x+dx;
+    
         counter=counter+1;
-        %disp([x' dx']);
-
-        Xs(counter+1,1)=x(1);
-        Ys(counter+1,1)=x(2);
+        
+        dx = -jacobian\functions;
+        x=x+dx;
+        
+        Xs(counter,1)=x(1);
+        Ys(counter,1)=x(2);
+        Dxs(counter,1)=dx(1);
+        Dys(counter,1)=dx(2);
         
     end
     
     %plot the coordinates we've found
     plot(x(1),x(2),'o')
     
-    hold on
-    
-    start_x
-    table(Xs,Ys)
 
 end
 

@@ -1,4 +1,4 @@
-
+%authors Ivan Liljeqvist and Filip Martinsson
 
 %start from 0, increase with 1, go to 365
 x=[-1:0.1:1];
@@ -65,7 +65,7 @@ while(i<=iterations)
 
     %caculate with Trapetsmetoden
     Ths(i,1)=h*( sum(y_values) - (y_values(1,1) + y_values(numel(y_values),1))/2  );
-    Errors(i,1)=abs(quad(@myfun,-1,1)-Ths(i,1));
+    Errors(i,1)=abs(2.7974349484-Ths(i,1));
 
     Hs(i,1)=h;
     
@@ -74,16 +74,16 @@ while(i<=iterations)
 
 end
 
-i=1;
+i=2;
 
 
 while(i<iterations)
      %we use    F'=F2 + (F2-F1)/Q^P-1
      %Q = 2 P=2 f?r att felet blir 4 ganger mindre varje gang
      %och H minskar med faktorn tva. 2^X=4. da ar X=2 och X=P
-     ExtapolatedValues(i,1)=Ths(i+1,1)+(Ths(i+1,1)-Ths(i,1))/(2^2 - 1);
+     ExtapolatedValues(i,1)=Ths(i,1)+(Ths(i,1)-Ths(i-1,1))/(2^2 - 1);
      
-     ExtrapolatedErrors(i,1)=abs(quad(@myfun,-1,1)-ExtapolatedValues(i,1));
+     ExtrapolatedErrors(i,1)=abs(2.7974349484-ExtapolatedValues(i,1));
      
      i=i+1;
 end
@@ -94,9 +94,7 @@ end
 
     N?r man extrapolerar f?rsvinner den ledande termen
     i 'felserien' och n?sta potens i serien ?r 4.
-    Allts? ?r P=4.
-
-    FIXA DET VI SKIPPADE!
+    Alltsa ?r P=4.
 %}
 
 
@@ -116,20 +114,20 @@ ExtapolatedValues
 
 hold on
 
-loglog([1e-2 1e-1],[1e-6 1e-4],'--')
+x=[0.01:0.01:1]
+y=x.^2
+loglog(x,y,'--')
 
-legend('Normal','Extrapolated','slope 2');
+hold on
+
+x=[0.01:0.01:1]
+y=x.^4
+loglog(x,y,'--')
+
+legend('Normal','Extrapolated','slope 2','slope 4');
 xlabel('Step length');
 ylabel('Error');
 title('Step length vs Error')
-
-
-%{
-    HOW TO PLOT???!
-    LOGLOG, LINEAR, COMPARE, GET SLOPE, FIND P FROM PLOT
-%}
-
-
 
 
 

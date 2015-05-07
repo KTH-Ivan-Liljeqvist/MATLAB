@@ -21,10 +21,10 @@ for i = A
 end 
 
 %{
-    Precis som i f?rra uppgiften konvergerar r?tterna som ?r l?ngst ut och
-    roten som ?r i mitten korrekt. Detta ?r eftersom absolutbeloppet av
-    derivatan d?r ?r mindre ?n 1.
+    Precis som i forra uppgiften konvergerar rotterna som ar langst ut och
+    roten som ar i mitten korrekt. Detta ?r eftersom absolutbeloppet av
+    derivatan dar ar mindre an 1.
 
-    Dem tv? andra r?tterna konvergerar ocks?, men inte mot r?tt rot, ?ven fast startv?rdet ?r v?l valt. 
+    Dem tva andra rotterna konvergerar ocksa, men inte mot ratt rot, ?ven fast startvardet ar val valt. 
     
 %}

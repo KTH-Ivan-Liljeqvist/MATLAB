@@ -1,5 +1,4 @@
-%author: Gerd Eriksson
-%Modified by Ivan Liljeqvist and Filip Matrinsson
+%authors: Ivan Liljeqvist and Filip Matrinsson
 %version: 2015-04-16
 
 
