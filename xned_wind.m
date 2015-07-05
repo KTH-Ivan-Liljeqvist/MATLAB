@@ -1,25 +1,28 @@
-function [ dist_from_lastx, result_vector] =xned(start_angle,draw_graph)
+function [ dist_from_lastx, result_vector] =xned_wind(start_angle,draw_graph)
 
-    XY0=[0 19*cos(start_angle) 1.5 19*sin(start_angle)]';
+    speed=19;
+    start_height=1.4;
+    
+    XY0=[0 speed*cos(start_angle) start_height speed*sin(start_angle)]';
     
     lastX=0;
-    h=0.02;
+    h=0.01;
     
     RESULT_X=[];
     RESULT_Y=[];
     
     time=0;
     oldX=0;
-    oldY=1.5;
+    oldY=start_height;
     
     result_vector=[];
     
     while(XY0(3)>0)
             
-        f1=varp(XY0);
-        f2=varp(XY0+h*f1/2);
-        f3=varp(XY0+h*f2/2);
-        f4=varp(XY0+h*f3);
+        f1=varp_wind(XY0);
+        f2=varp_wind(XY0+h*f1/2);
+        f3=varp_wind(XY0+h*f2/2);
+        f4=varp_wind(XY0+h*f3);
 
         XY0=XY0+h*(f1+2*f2+2*f3+f4)/6;
         
@@ -46,11 +49,11 @@ function [ dist_from_lastx, result_vector] =xned(start_angle,draw_graph)
         plot(RESULT_X,RESULT_Y);
     end
 
-disp('TIME WHEN WE HIT THE GROUND');
-time
+%disp('TIME WHEN WE HIT THE GROUND');
+time;
 
 %result_vector
-dist_from_lastx=20-lastX;
+dist_from_lastx=lastX-20;
 
 end
  
